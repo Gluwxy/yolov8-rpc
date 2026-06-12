@@ -1,0 +1,13 @@
+# YOLOv8x Retail Product Pricing-Recognition
+# Install with: pip install -r requirements.txt
+ 
+ultralytics>=8.2.0
+kagglehub>=0.2.0
+pycocotools>=2.0.7
+opencv-python-headless>=4.9.0
+Pillow>=10.0.0
+numpy>=1.24.0
+tqdm>=4.66.0
+PyYAML>=6.0
+matplotlib>=3.8.0
+pandas>=2.0.0
