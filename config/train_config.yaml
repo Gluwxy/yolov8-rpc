@@ -1,0 +1,49 @@
+# ============================================================
+# YOLOv8x Retail Product Pricing-Recognition
+# Training Configuration
+# ============================================================
+# All values here override the defaults in src/train.py.
+# Commented-out keys use the coded defaults.
+
+# ── Model ────────────────────────────────────────────────────
+weights:    yolov8x.pt   # pretrained COCO weights; swap for yolov8n/s/m/l
+pretrained: true
+
+# ── Dataset ──────────────────────────────────────────────────
+# (set via --data CLI flag or train() call; not here)
+
+# ── Core training ────────────────────────────────────────────
+epochs:    50          # increase to 100–200 for full dataset
+imgsz:     640         # input resolution; 1280 for higher accuracy
+batch:     16          # reduce to 8 if GPU OOM (T4); increase to 32 on A100
+device:    0           # GPU index; "cpu" for CPU-only
+workers:   4
+
+# ── Optimiser ────────────────────────────────────────────────
+optimizer: AdamW
+lr0:       0.001       # initial learning rate
+lrf:       0.01        # final lr = lr0 * lrf (cosine schedule)
+cos_lr:    true
+patience:  15          # early stopping — epochs without improvement
+
+# ── Mixed precision & regularisation ─────────────────────────
+amp:       true        # AMP (FP16) — major speed-up on modern GPUs
+
+# ── Augmentation ─────────────────────────────────────────────
+mosaic:      1.0       # mosaic probability (highly recommended)
+mixup:       0.1       # MixUp alpha
+copy_paste:  0.1       # copy-paste augmentation
+degrees:     5.0       # rotation ±degrees
+translate:   0.1       # translation fraction
+scale:       0.5       # scale ±gain
+hsv_h:       0.015     # hue jitter
+hsv_s:       0.7       # saturation jitter
+hsv_v:       0.4       # value jitter
+
+# ── Checkpointing ────────────────────────────────────────────
+save_period: 10        # save checkpoint every N epochs
+
+# ── Output ───────────────────────────────────────────────────
+project: runs
+name:    yolov8x_rpc
+verbose: true
